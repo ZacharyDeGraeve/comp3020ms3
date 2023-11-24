@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+  background: linear-gradient(to right, #ffffff, #e0f7e0); 
+  flex-direction: column;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center; 
+}
+
+.login-container h2 {
+  font-size: 1.5em; 
+}
+
+
+.pro-coach {
+  text-align: center;
+  font-size: 3em; /* Adjust the font size as needed */
+  margin-top: 20px; /* Adjust the top margin as needed */
+  margin-bottom: 10px; /* Adjust the bottom margin as needed */
+  
+}
+.bottom {
+  text-align: center;
+  padding: 10px;
+
+  position: absolute; 
+  bottom: 0; 
+
+}
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+  <title>Login Page</title>
+</head>
+<body>
+  <p class="pro-coach">PRO COACH</p>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button type="button" onclick="login()">Login</button>
+    </form>
+</div>
+
+<p class="bottom">This is the bottom of the page.</p>
+
+
+
+
+
+
+
+  
+  
+  <script>
+    function login() {
+      var passwordInput = document.getElementById("password");
+      var password = passwordInput.value;
+
+      if (password !== "") {
+        // Redirect to testlibrary.html on successful login
+        window.location.href = "library.html";
+      } else {
+        // Alert on login failure
+        alert("Login failed. Please enter a password.");
+      }
+    }
+  </script>
+</body>
+</html>
