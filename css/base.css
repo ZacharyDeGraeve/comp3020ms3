@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    
+}
+
+ul, ol, li{
+    list-style: none;
+}
+
+body{
+    background: linear-gradient(to right, #ffffff, #e0f7e0); 
+    font-size: 14px;
+
+
+
+
+
+}
+a {
+    text-decoration: none; 
+}
+
+input{
+    border: 0 none;
+    outline-style: none;
+}
