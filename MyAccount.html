@@ -1,0 +1,305 @@
+<html lang="en">
+
+<head>
+    <title>My Account</title>
+</head>
+
+<div id="header-bar">
+    <button onclick="location.href='Temp.html'" id="title">Pro Coach</button>
+    <div id="navigation">
+        <button onclick="location.href='Temp.html'" class="nav-button">Library</button>
+        <button onclick="location.href='Temp.html'" class="nav-button">Create Play</button>
+        <button onclick="location.href='Temp.html'" class="nav-button">My Account</button>
+    </div>
+</div>
+
+<body>
+
+    <div id="user-info">
+        <img id="profile-img" src="SingingBear.png" alt="Profile Photo" width="48" height="48">
+        <h1>My Account</h1>
+    </div>
+
+    <div id="folder-container"></div>
+
+    <div id="play-container"></div>
+
+</body>
+
+</html>
+
+<style>
+    button:hover {
+        cursor: pointer;
+    }
+
+    body {
+        font-family: 'Courier New', Courier, monospace;
+        background: white;
+    }
+
+    #header-bar {
+        padding: 10px;
+        border-radius: 0px 0px 5px 5px;
+        background-color: green;
+        box-shadow: 2px 2px 10px lightgray;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #title {
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        color: black;
+        text-shadow: 2px 2px 5px darkgreen;
+        background-color: palegreen;
+        box-shadow: 2px 2px 10px darkgreen;
+
+        border: none;
+        border-radius: 5px;
+    }
+
+    .nav-button {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        color: black;
+        text-shadow: 2px 2px 5px green;
+        background-color: palegreen;
+        box-shadow: 2px 2px 10px darkgreen;
+
+        border: none;
+        border-radius: 3px;
+        padding: 5px;
+
+        transition: opacity 0.2s;
+    }
+
+    .nav-button:hover {
+        opacity: 0.7;
+    }
+
+    .nav-button:active {
+        box-shadow: inset 2px 2px 5px green;
+    }
+
+    #profile-img {
+        padding: 10px;
+    }
+
+    #user-info {
+        padding: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    #folder-container {
+        height: 1fr;
+        box-shadow: inset 2px 2px 10px lightgray;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .folder {
+        background-color: transparent;
+
+        text-align: center;
+        width: fit-content;
+        height: fit-content;
+
+        margin:20px;
+    }
+
+    .folder-img {
+        height: 100px;
+        width: 100px;
+
+        transition: opacity 0.2s;
+    }
+
+    .folder-img:hover {
+        opacity: 0.8;
+    }
+
+    .folder-img:focus {
+        box-shadow: 2px 2px 10px lightgray;
+    }
+
+    .folder-name-input {
+        display: block;
+    }
+
+    #play-container {
+        padding: 10px;
+        height: 600px;
+        box-shadow: inset 2px 2px 10px lightgray;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+
+    }
+
+    .play-card {
+        width: fit-content;
+        height: fit-content;
+        box-shadow: 2px 2px 10px lightgray;
+        border-radius: 5px;
+        margin: 40px;
+
+        transition: opacity 0.2s;
+    }
+
+    .play-card:hover {
+        opacity: 0.8;
+    }
+
+    .play-card:active {
+        box-shadow: 2px 2px 10px gray;
+    }
+
+    .play-card-img {
+        image-rendering: pixelated;
+    }
+
+    .play-card-info {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: lightgray;
+    }
+</style>
+
+<script>
+// please forgive my questionable javascript skills, shoutout to stackoverflow for the carry lmao
+
+// pushes a new folder onto the list of existing ones, purely visual right now
+    function newFolder() {
+        let name = document.getElementById("folder-name-input").value;
+        if (name == "") {
+            window.alert("Field cannot be empty");
+        }
+        else if (myFolders.includes(name)) {
+            window.alert("The folder " + name + " already exists!");
+        }
+        else {
+            myFolders.push(name);
+            loadFolders();
+        }
+    }
+// loads the folders into the folder-container div as well as the add new folder button & input
+    function loadFolders() {
+        folderContainer = document.getElementById("folder-container");
+        folderContainer.innerHTML = "";
+        for (let i = 0; i < myFolders.length; i++) {
+            folderContainer.innerHTML += ''
+                + '<div onclick="openFolder(this)" class="folder" id="folder' + (i+1) + '">'
+                + '    <img class="folder-img" src="SingingBear.png" alt="Folder">'
+                + '    <p class="folder-name">' + myFolders[i] + '</p>'
+                + '</div>';
+        }
+        folderContainer.innerHTML += ''
+            + '<div class="folder new-folder">'
+            + '    <img onclick="newFolder()" class="folder-img" src="SingingBear.png" alt="New Folder">'
+            + '    <input type="text" id="folder-name-input" placeholder="Name Required">'
+            + '</div>'
+    }
+// Fills the play-container div with play cards based on the selected folder
+    function openFolder(folder) {
+
+        playContainer = document.getElementById("play-container");
+        playContainer.innerHTML = "";
+
+        // Always evaluates to true for some reason?
+        if (window[folder.id]) {
+            let playList = window[folder.id];
+
+            for (let i = 0; i < playList.length; i++) {
+                playContainer.innerHTML += ''
+                    + '<div class="play-card">'
+                    + '    <img class="play-card-image" src="SingingBear.png" alt="Preview" width="200" height="200">'
+                    + '    <div class="play-card-info">'
+                    + '        <p class="play-card-title">' + playList[i].title + '</p>'
+                    + '        <p class="play-card-rating">' + playList[i].rating + ' <span style="color: gold;">&#9733;</span></p>'
+                    + '    </div>'
+                    + '</div>';
+            }
+        }
+        else {
+            // Not sure how to fix this.
+            playContainer.innerHTML = "This folder is empty!";
+        }
+    }
+
+
+    //lists of fake folders full of plays
+    var myFolders = ["My Plays", "Saved Plays", "Sample Folder"];
+    var folder1 = [
+        {
+            "id": "1",
+            "title": "My Plays 1",
+            "rating": "4.7",
+        },
+        {
+            "id": "2",
+            "title": "My Plays 2",
+            "rating": "3.2",
+        },
+        {
+            "id": "3",
+            "title": "My Plays 3",
+            "rating": "5.0",
+        }
+    ];
+
+    var folder2 = [
+        {
+            "id": "1",
+            "title": "Saved Plays 1",
+            "rating": "4.7",
+        },
+        {
+            "id": "2",
+            "title": "Saved Plays 2",
+            "rating": "3.2",
+        },
+        {
+            "id": "3",
+            "title": "Saved Plays 3",
+            "rating": "5.0",
+        }
+    ];
+
+    var folder3 = [
+        {
+            "id": "1",
+            "title": "Sample Plays 1",
+            "rating": "4.7",
+        },
+        {
+            "id": "2",
+            "title": "Sample Plays 2",
+            "rating": "3.2",
+        },
+        {
+            "id": "3",
+            "title": "Sample Plays 3",
+            "rating": "5.0",
+        }
+        
+    ];
+
+    loadFolders();
+</script>
