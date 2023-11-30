@@ -1,0 +1,9 @@
+.star-rating{
+    color: goldenrod;
+}
+.selected-sports{
+    font-size: 1.5rem;
+    color: rgb(40, 188, 40);
+    margin-right: 12px;
+    margin-left: 1rem;
+}
