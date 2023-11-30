@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+ul, ol, li{
+    list-style: none;
+}
+
+body {
+
+
+
+
+    animation: gradientAnimation 10s infinite;
+    font-size: 14px;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-color: white;
+    }
+    50% {
+        background-color: #e0f7e0; /* 浅绿色 */
+    }
+    100% {
+        background-color: white;
+    }
+}
+a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer; 
+}
+span{
+    cursor: pointer;
+}
+img{
+    vertical-align: none;
+}
+input{
+    border: 0 none;
+    outline-style: none;
+}

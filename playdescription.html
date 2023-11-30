@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./css/playdescription.css">
+    <link rel="stylesheet" href="./css/libraryTopTest.css">
+    <link rel="icon" href="./img/medal-solid.svg">
+
+    <title>Play Description</title>
+    <style>
+
+    </style>
+
+</head>
+<body>
+    <!-- top -->
+    <div class="top">
+        <!-- top-left-select -->
+           <div class="top-left">
+            <ul class="top-left-entry">
+               <!-- need-address -->
+            <li><a href="library.html" class="logo" ><span>PRO COACH</span>
+                <img class="small-logo" src="./img/clipboard-regular.svg" alt="ERROR"></a></li>
+            <li><a href="#" onclick="showContent('soccer'); return false;" class="select"><span>Soccer</span>
+                <img class="small-sport" src="./img/futbol-solid.svg" alt="ERROR"></a></li>
+            <li><a href="#" onclick="showContent('basketball'); return false; "class="select"><span>Basketball</span>
+                <img class="small-sport" src="./img/basketball-solid.svg" alt="ERROR"></a></li>
+            <li><a href="#" onclick="showContent('football'); return false;" class="select"><span>Football</span>
+                <img class="small-sport" src="./img/football-solid.svg" alt="ERROR"></a></li>
+            <li><a href="#" onclick="showContent('hockey'); return false;" class="select"><span>Hockey</span>
+                <img class="small-sport" src="./img/hockey-puck-solid.svg" alt="ERROR"></a></li>
+          
+        </ul>
+     <!-- top-mid-search -->
+        <div class="top-mid-search">
+            
+            <!-- search-content -->
+        <div class="search-content">
+            <input type="text" class="search-content-input" id="searchInput" placeholder="Please enter a tactical name...">
+        </div>
+        <!-- search-button-->
+        <div class="search-button">
+              <!-- need-address -->
+              <button class="search-button" onclick="showIncompleteMessage()">
+                <img class="small-search" src="./img/magnifying-glass-solid.svg" alt="">
+     </button>
+        </div>
+    </div>
+        <!-- top-right-creat&account -->
+        <ul class="top-right-entry">
+        <!-- need-address -->
+            <li class="right-entry"><a href="play_designer.html"><span>Create</span>
+                </a></li>
+            <li class="right-entry"><a href="MyAccount.html"><span>Account</span>
+                </a></li>
+            <li class="right-entry"><a href="library.html"><span>LoginOut</span>
+                </a></li>
+        </ul>
+    </div>
+        <!-- banner -->
+
+</div>
+   
+   
+   </div>
+    <div class="magrin">
+    <div id="image-container">
+        <img id="playImage" src="./img/f.png" alt="Play image">
+
+    </div>
+
+
+    <div class="top-right">
+        <button id="saveButton" onclick="savePlay()">Save</button>
+        <button id="editButton" onclick="location.href='play_designer.html'">Edit</button>
+    </div>
+
+
+
+    <div class="description">
+        <element class="title-rating">
+            <h1 id="playTitle"></h1>
+
+            <div id="rating">
+                <!-- <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="far fa-star"></i> -->
+            </div>
+        </element>
+
+        <div id="tags">
+            <h3 id="play-tags">Tags:</h3>
+            <!-- <span class="tag">Tag 1</span>
+            <span class="tag">Tag 2</span>
+            <span class="tag">Tag 3</span> -->
+        </div>
+
+        <p id="playDescription">Play description... This is the description of the play</p>
+    </div>
+
+
+    
+
+    <div class="comments">
+        <h2>Comments</h2>
+        <form id="commentForm">
+            <div id="userRating">
+                <button class="star" data-value="1"><i class="far fa-star"></i></button>
+                <button class="star" data-value="2"><i class="far fa-star"></i></button>
+                <button class="star" data-value="3"><i class="far fa-star"></i></button>
+                <button class="star" data-value="4"><i class="far fa-star"></i></button>
+                <button class="star" data-value="5"><i class="far fa-star"></i></button>
+            </div>
+            <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+
+            
+            <button type="submit" value="submit">Submit</button>
+        </form>
+    </div>
+    <ul id="commentList">
+        
+        <li>
+            <h3>User 1</h3>
+            <div class="userRating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>This is a great play!</p>
+        </li>
+        <li>
+            <h3>User 2</h3>
+            <div class="userRating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+            </div>
+            <p>Can't wait to see another one!</p>
+        </li>
+    </ul>
+</div>
+
+    <!-- rating -->
+    <script>
+        document.querySelectorAll('#userRating .star').forEach(function(star) {
+            star.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                var value = this.getAttribute('data-value');
+                document.querySelectorAll('#userRating .star').forEach(function(star) {
+                    star.innerHTML = '<i class="far fa-star"></i>';
+                });
+                for (var i = 0; i < value; i++) {
+                    document.querySelectorAll('#userRating .star')[i].innerHTML = '<i class="fas fa-star"></i>';
+                }
+            });
+        });
+    </script>
+
+    <!-- sumbit -->
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var rating = document.querySelectorAll('#userRating .fas').length;
+            var commentText = document.getElementById('commentInput').value;
+
+            if (!rating || !commentText) {
+                alert('Please provide a rating and comment.');
+                return;
+            }
+
+            var username = 'Current User';
+            var comment = document.createElement('li');
+            var userRatingHTML = '';
+
+            for (var i = 0; i < 5; i++) {
+                if (i < rating) {
+                    userRatingHTML += '<i class="fas fa-star"></i>';
+                } else {
+                    userRatingHTML += '<i class="far fa-star"></i>';
+                }
+            }
+            comment.innerHTML = '<h3>' + username + '</h3><div class="userRating">' + userRatingHTML + '</div><p>' + commentText + '</p>';
+
+            var commentList = document.getElementById('commentList');
+            commentList.insertBefore(comment, commentList.firstChild);
+
+            document.getElementById('commentInput').value = '';
+            document.querySelectorAll('#userRating .star').forEach(star => star.innerHTML = '<i class="far fa-star"></i>');
+        });
+    </script>
+
+    <!-- image -->
+    <script>
+        document.getElementById('playImage').addEventListener('click', function() {
+            var imgSrc = this.getAttribute('src');
+
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.right = '0';
+            overlay.style.bottom = '0';
+            overlay.style.left = '0';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.display = 'flex';
+            overlay.style.justifyContent = 'center';
+            overlay.style.alignItems = 'center';
+            overlay.style.cursor = 'default';
+            overlay.innerHTML = '<img src="' + imgSrc + '">';
+
+            overlay.addEventListener('click', function() {
+                document.body.removeChild(overlay);
+            });
+
+            var img = overlay.querySelector('img');
+            img.style.maxWidth = '80%';
+            img.style.maxHeight = '80%';
+            img.style.objectFit = 'contain';
+
+            window.addEventListener('resize', function() {
+                img.style.maxWidth = '80%';
+                img.style.maxHeight = '80%';
+            });
+
+            document.body.appendChild(overlay);
+        });
+    </script>
+
+    <script>
+        function savePlay() {
+            let savePrompt = document.createElement('div');
+            savePrompt.textContent = 'Play saved';
+            savePrompt.textContent = 'Play saved';
+            savePrompt.style.position = 'fixed';
+            savePrompt.style.top = '20px';
+            savePrompt.style.left = '50%';
+            savePrompt.style.transform = 'translateX(-50%)';
+            savePrompt.style.padding = '10px';
+            savePrompt.style.backgroundColor = '#f8d7da';
+            savePrompt.style.color = '#721c24';
+            savePrompt.style.borderRadius = '5px';
+            savePrompt.style.opacity = '0';
+            savePrompt.style.transition = 'opacity 0.5s ease-in-out';
+            document.body.appendChild(savePrompt);
+        
+            setTimeout(function() {
+                savePrompt.style.opacity = '1';
+            }, 0);
+
+            setTimeout(function() {
+                savePrompt.style.opacity = '0';
+            }, 2000);
+
+            setTimeout(function() {
+                document.body.removeChild(savePrompt);
+            }, 2500);
+        }
+    </script>
+
+    <script>
+        window.onload = function() {
+            var play = plays[0]; // Get the first play
+
+            document.getElementById('playTitle').textContent = play.name;
+
+            var ratingElement = document.getElementById('rating');
+            ratingElement.innerHTML = '';
+            for (var i = 0; i < 5; i++) {
+                if (i < Math.floor(play.rating)) {
+                    ratingElement.innerHTML += '<i class="fas fa-star"></i>';
+                } else if (i < play.rating) {
+                    ratingElement.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    ratingElement.innerHTML += '<i class="far fa-star"></i>';
+                }
+            }
+
+            var tagsElement = document.getElementById('tags');
+            tagsElement.innerHTML = '<h3 id="play-tags">Tags:</h3>';
+            for (var i = 0; i < play.tags.length; i++) {
+                tagsElement.innerHTML += '<span class="tag">' + play.tags[i] + '</span>';
+            }
+
+            document.getElementById('playDescription').textContent = play.description;
+        };
+    </script>
+
+    <script>
+        var plays = [
+            {
+                "name": "Play 1",
+                "rating": 3.5,
+                "tags": ["offense", "blitz", "hook"],
+                "description": "This is a description of Play 1."
+            }
+        ];
+    </script>
+
+</body>
+</html>
