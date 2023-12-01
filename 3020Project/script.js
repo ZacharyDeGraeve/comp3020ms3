@@ -22,12 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('teammate-icon').addEventListener('click', function (event) {
     isTeammateIconSelected = true;
     selectedTool = 'teammate';
+    unhighlightIcon();
     highlightIcon(event.target);
   });
 
   document.getElementById('opponent-icon').addEventListener('click', function (event) {
     isOpponentIconSelected = true;
     selectedTool = 'opponent';
+    unhighlightIcon();
     highlightIcon(event.target);
   });
 
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     isPassIconSelected = true;
     isDrawing = true;
     selectedTool = 'pass';
+    unhighlightIcon();
     highlightIcon(event.target);
   });
 
@@ -42,12 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
     isMoveIconSelected = true;
     isDrawing = true;
     selectedTool = 'move';
+    unhighlightIcon();
     highlightIcon(event.target);
   });
 
   document.getElementById('delete-icon').addEventListener('click', function (event) {
     isDeleteIconSelected = true;
     selectedTool = 'delete';
+    unhighlightIcon();
     highlightIcon(event.target);
   });
 
