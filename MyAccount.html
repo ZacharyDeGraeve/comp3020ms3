@@ -3,7 +3,8 @@
 <head>
     <title>My Account</title>
     <link rel="stylesheet" href="MyAccount.css">
-    <script type="module" src="MyAccount.js"></script>
+    <script src="objects.js" defer></script>
+    <script src="MyAccount.js" defer></script>
 </head>
 
 <div id="header-bar">
@@ -27,6 +28,12 @@
     <div id="play-container"></div>
 
 </body>
+
+<div id="new-folder-popup">
+    <input type="text" placeholder="Folder Name Here" id="folder-name-input">
+    <button>Submit</button>
+    <button>Cancel</button>
+</div>
 
 <div id="social-menu">
     <div onclick="toggleSocial()" id="social-drop-btn">
