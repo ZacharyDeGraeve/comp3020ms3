@@ -17,7 +17,7 @@ function newFolder() {
                 "name": name,
                 "plays": []
             });
-
+        hideNewFolderPopup();
         loadFolders();
     }
 }
@@ -29,13 +29,14 @@ function loadFolders() {
     for (let i = 0; i < folders.length; i++) {
         folderContainer.innerHTML += ''
             + '<div onclick="openFolder(this.id)" class="folder" id="' + folders[i].id + '">'
-            + '    <img class="folder-img" src="SingingBear.png" alt="Folder">'
+            + '    <img class="folder-img" src="icons8-folder-480.png" alt="Folder">'
             + '    <p class="folder-name">' + folders[i].name + '</p>'
             + '</div>';
     }
     folderContainer.innerHTML += ''
         + '<div class="folder new-folder">'
-        + '    <img onclick="newFolder()" class="folder-img" src="SingingBear.png" alt="New Folder">'
+        + '    <img onclick="showNewFolderPopup()" class="folder-img" src="plus.png" alt="New Folder">'
+        + '    <p>New Folder</p>'
         + '</div>'
 }
 
@@ -47,18 +48,31 @@ function openFolder(id) {
 
     folder = folders.find(e => e.id == id);
 
-    for (let i = 0; i < plays.length; i++) {
-        if (folder.plays.includes(plays[i].play_id)) {
-            playContainer.innerHTML += ''
-                + '<div class="play-card">'
-                + '    <img class="play-card-image" src="' + "SingingBear.png" + '" alt="Play Preview">'
-                + '    <div class="play-card-info">'
-                + '        <p class="play-card-title">' + plays[i].play_name + '</p>'
-                + '        <p class="play-card-rating">' + plays[i].rating + ' <span style="color: gold;">&#9733;</span></p>'
-                + '    </div>'
-                + '</div>';
+    if(folder.plays.length == 0) {
+        playContainer.innerHTML = "This folder is empty!"
+    }
+    else {
+        for (let i = 0; i < plays.length; i++) {
+            if (folder.plays.includes(plays[i].play_id)) {
+                playContainer.innerHTML += ''
+                    + '<div onclick="" class="play-card">'
+                    + '    <img class="play-card-image" src="' + plays[i].image_url + '" alt="Play Preview">'
+                    + '    <div class="play-card-info">'
+                    + '        <p class="play-card-title">' + plays[i].play_name + '</p>'
+                    + '        <p class="play-card-rating">' + plays[i].rating + ' <span style="color: gold;">&#9733;</span></p>'
+                    + '    </div>'
+                    + '</div>';
+            }
         }
     }
+}
+
+function showNewFolderPopup() {
+    document.getElementById("new-folder-popup").style.display = "block";
+}
+
+function hideNewFolderPopup() {
+    document.getElementById("new-folder-popup").style.display = "none";
 }
 
 function toggleSocial() {

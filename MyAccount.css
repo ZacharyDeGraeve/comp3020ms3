@@ -18,7 +18,7 @@ button:hover {
     align-items: center;
     justify-content: space-between;
 
-    background-color: green;
+    background-color: red;
 }
 
 #navigation {
@@ -31,6 +31,8 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: left;
+
+    background-color: orange;
 }
 
 #folder-container {
@@ -43,7 +45,7 @@ button:hover {
     flex-wrap: wrap;
     overflow-y: scroll;
 
-    background-color: red;
+    background-color: yellow;
 }
 
 .folder {
@@ -66,6 +68,10 @@ button:hover {
     object-fit: contain;
 }
 
+.folder-img:hover {
+    cursor: pointer;
+}
+
 #play-container {
     height: 50%;
     width: 100%;
@@ -75,7 +81,7 @@ button:hover {
     flex-wrap: wrap;
     overflow-y: scroll;
 
-    background-color: blue;
+    background-color: green;
 }
 
 .play-card {
@@ -83,7 +89,7 @@ button:hover {
     height: fit-content;
     margin: 1.5%;
 
-    background-color: purple;
+    background-color: blue;
 
     transition: opacity 0.2s;
 }
@@ -103,7 +109,18 @@ button:hover {
 }
 
 #new-folder-popup {
-    
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+
+    display:none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    background-color: purple;
 }
 
 #social-menu {
@@ -115,7 +132,7 @@ button:hover {
     margin: 50px;
     align-items: center;
 
-    background-color: yellow;
+    background-color: pink;
 }
 
 #social-drop-btn {
@@ -136,4 +153,15 @@ button:hover {
     overflow: hidden;
 
     transition: height 0.4s;
+}
+
+footer {
+    padding: 10px;
+}
+
+a {
+    display:block;
+
+    color: gray;
+    text-decoration: none;
 }
