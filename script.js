@@ -1,21 +1,30 @@
 // script.js
-var plays;
-var tempPlays;
+
+// import data from `./plays.json` assert { type: `json` };
+
+
+// const { default: info } = await import("./plays.json", {
+//   assert: {
+//     type: "json",
+//   },
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
     // Function to fetch and use JSON data
-    function fetchPlaysData() {
-        // Fetch the JSON file
-        fetch('plays.json')
-            .then(response => response.json())
-            .then(data => {
-                this.plays = data;
-                this.tempPlays = data;
-                generateGridContent(data);
-            })
-            .catch(error => console.error('Error fetching plays.json:', error));
-    }
+    // function fetchPlaysData() {
+    //     // Fetch the JSON file
+    //     fetch('file://plays.json')
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             this.plays = data;
+    //             this.tempPlays = data;
+    //             generateGridContent(data);
+    //         })
+    //         .catch(error => console.error('Error fetching plays.json:', error));
+    // }
 
-    fetchPlaysData();
+    generateGridContent(plays);
+    // fetchPlaysData();
 });
 
 
@@ -125,7 +134,7 @@ function searchByPlayName(){
     
     if(userInput.length > 1)
     {
-        const search = tempPlays.filter(play => play.play_name.toLowerCase() === userInput.toLowerCase());
+        const search = plays.filter(play => play.play_name.toLowerCase() === userInput.toLowerCase());
 
         clearContent();
     
@@ -156,6 +165,8 @@ function compareStrings(a, b) {
   function redirect(id){
 
     const selected = plays.filter(play => play.play_id === id);
+    
+    console.log(selected);
 
     localStorage.setItem("data",JSON.stringify(selected));
 
@@ -200,3 +211,374 @@ function compareStrings(a, b) {
 
     // }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var plays = [
+    {
+        "play_id": 1,
+        "play_name": "Play 1",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Offensive",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 2,
+        "play_name": "Play 2",
+        "sport": "Basketball",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Offensive",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+
+    {
+        "play_id": 6,
+        "play_name": "Play 6",
+        "sport": "Basketball",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 7,
+        "play_name": "Play 7",
+        "sport": "Ice Hockey",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Offensive",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 8,
+        "play_name": "Play 8",
+        "sport": "Soccer",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Defensive",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+
+
+    {
+        "play_id": 3,
+        "play_name": "Play 3",
+        "sport": "Ice Hockey",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 4,
+        "play_name": "Play 4",
+        "sport": "Soccer",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 5,
+        "play_name": "Play 5",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    
+
+
+
+
+    {
+        "play_id": 9,
+        "play_name": "Play 9",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 10,
+        "play_name": "Play 10",
+        "sport": "Basketball",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 11,
+        "play_name": "Play 11",
+        "sport": "Soccer",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 12,
+        "play_name": "Play 12",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 13,
+        "play_name": "Play 13",
+        "sport": "Basketball",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 14,
+        "play_name": "Play 14",
+        "sport": "Ice Hockey",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 15,
+        "play_name": "Play 15",
+        "sport": "Soccer",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 16,
+        "play_name": "Play 16",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 17,
+        "play_name": "Play 17",
+        "sport": "Basketball",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 18,
+        "play_name": "Play 18",
+        "sport": "Ice Hockey",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 19,
+        "play_name": "Play 19",
+        "sport": "Soccer",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 3.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here",
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    },
+    {
+        "play_id": 20,
+        "play_name": "Play 20",
+        "sport": "Football",
+        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "rating": 5.0,
+        "created_by": "Person Name",
+        "comments": [
+            "First Comment will go here",
+            "Second Comment will go here"
+        ],
+        "tags": [
+            "Tag 1",
+            "Tag 2",
+            "Tag3"
+        ]
+    }
+]
+
+
+
+var tempPlays = plays;
