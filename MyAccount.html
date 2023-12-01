@@ -7,8 +7,8 @@
 <div id="header-bar">
     <button onclick="location.href='Temp.html'" id="title">Pro Coach</button>
     <div id="navigation">
-        <button onclick="location.href='Temp.html'" class="nav-button">Library</button>
-        <button onclick="location.href='Temp.html'" class="nav-button">Create Play</button>
+        <button class="nav-button">Library</button>
+        <button class="nav-button">Create Play</button>
         <button onclick="location.href='Temp.html'" class="nav-button">My Account</button>
     </div>
 </div>
@@ -26,72 +26,53 @@
 
 </body>
 
+<div id="social-menu">
+    <div onclick="toggleSocial()" id="social-drop-btn">
+        <p>Friends List</p>
+        <p id="social-arrow">&#9650;</p>
+    </div>
+    <div id="social-list">
+        <button onclick="window.alert('Coming Soon!')">Friend1</button>
+        <button onclick="window.alert('Coming Soon!')">Friend2</button>
+        <button onclick="window.alert('Coming Soon!')">Friend3</button>
+        <button onclick="window.alert('Coming Soon!')">Friend4</button>
+    </div>
+
+</div>
+
 </html>
 
 <style>
     button:hover {
         cursor: pointer;
-    }
-
-    body {
-        font-family: 'Courier New', Courier, monospace;
-        background: white;
+        opacity: 0.7;
     }
 
     #header-bar {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+
+        height: fit-content;
         padding: 10px;
-        border-radius: 0px 0px 5px 5px;
-        background-color: green;
-        box-shadow: 2px 2px 10px lightgray;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        background-color: green;
     }
 
-    #title {
-        font-size: 24px;
-        font-weight: bold;
-        font-family: 'Courier New', Courier, monospace;
-        color: black;
-        text-shadow: 2px 2px 5px darkgreen;
-        background-color: palegreen;
-        box-shadow: 2px 2px 10px darkgreen;
-
-        border: none;
-        border-radius: 5px;
-    }
-
-    .nav-button {
-        font-size: 18px;
-        font-weight: bold;
-        font-family: 'Courier New', Courier, monospace;
-        color: black;
-        text-shadow: 2px 2px 5px green;
-        background-color: palegreen;
-        box-shadow: 2px 2px 10px darkgreen;
-
-        border: none;
-        border-radius: 3px;
-        padding: 5px;
-
-        transition: opacity 0.2s;
-    }
-
-    .nav-button:hover {
-        opacity: 0.7;
-    }
-
-    .nav-button:active {
-        box-shadow: inset 2px 2px 5px green;
-    }
-
-    #profile-img {
-        padding: 10px;
+    #navigation {
+        display: flex;
     }
 
     #user-info {
-        padding: 20px;
+        margin-top: 50px;
+        height: 200px;
 
         display: flex;
         align-items: center;
@@ -99,78 +80,64 @@
     }
 
     #folder-container {
-        height: 1fr;
-        box-shadow: inset 2px 2px 10px lightgray;
-        border-radius: 5px;
+
+        width: 100%;
+        height: 30%;
 
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        margin-bottom: 20px;
+        overflow-y: scroll;
+
+        background-color: red;
     }
 
     .folder {
-        background-color: transparent;
+
+
+        width: fit-content;
+        min-width: 100px;
+        height: 50%;
+        padding: 2.5%;
 
         text-align: center;
-        width: fit-content;
-        height: fit-content;
 
-        margin:20px;
+        background-color: transparent;
+
     }
 
     .folder-img {
-        height: 100px;
-        width: 100px;
-
-        transition: opacity 0.2s;
-    }
-
-    .folder-img:hover {
-        opacity: 0.8;
-    }
-
-    .folder-img:focus {
-        box-shadow: 2px 2px 10px lightgray;
-    }
-
-    .folder-name-input {
-        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     #play-container {
-        padding: 10px;
-        height: 600px;
-        box-shadow: inset 2px 2px 10px lightgray;
-        border-radius: 5px;
+        height: fit-content;
+        min-height: 60%;
+        width: 100%;
 
         display: flex;
         justify-content: left;
         flex-wrap: wrap;
-        overflow-y: scroll;
 
+        background-color: blue;
     }
 
     .play-card {
-        width: fit-content;
+        width: 13.66%;
         height: fit-content;
-        box-shadow: 2px 2px 10px lightgray;
-        border-radius: 5px;
-        margin: 40px;
+        margin: 1.5%;
+
+        background-color: purple;
 
         transition: opacity 0.2s;
     }
 
-    .play-card:hover {
-        opacity: 0.8;
-    }
-
-    .play-card:active {
-        box-shadow: 2px 2px 10px gray;
-    }
-
-    .play-card-img {
-        image-rendering: pixelated;
+    .play-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .play-card-info {
@@ -180,12 +147,44 @@
         justify-content: space-between;
         background-color: lightgray;
     }
+
+    #social-menu {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        height: fit-content;
+        z-index: 1;
+        margin: 50px;
+        align-items: center;
+
+        background-color: yellow;
+    }
+
+    #social-drop-btn {
+        cursor: pointer;
+
+        padding: 10px;
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #social-list {
+        height: 0px;
+        width: 200px;
+
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        transition: height 0.4s;
+    }
 </style>
 
 <script>
-// please forgive my questionable javascript skills, shoutout to stackoverflow for the carry lmao
+    // please forgive my questionable javascript skills, shoutout to stackoverflow for the carry lmao
 
-// pushes a new folder onto the list of existing ones, purely visual right now
+    // pushes a new folder onto the list of existing ones, purely visual right now
     function newFolder() {
         let name = document.getElementById("folder-name-input").value;
         if (name == "") {
@@ -199,13 +198,14 @@
             loadFolders();
         }
     }
-// loads the folders into the folder-container div as well as the add new folder button & input
+
+    // loads the folders into the folder-container div as well as the add new folder button & input
     function loadFolders() {
         folderContainer = document.getElementById("folder-container");
         folderContainer.innerHTML = "";
         for (let i = 0; i < myFolders.length; i++) {
             folderContainer.innerHTML += ''
-                + '<div onclick="openFolder(this)" class="folder" id="folder' + (i+1) + '">'
+                + '<div onclick="openFolder(this)" class="folder" id="folder' + (i + 1) + '">'
                 + '    <img class="folder-img" src="SingingBear.png" alt="Folder">'
                 + '    <p class="folder-name">' + myFolders[i] + '</p>'
                 + '</div>';
@@ -213,10 +213,10 @@
         folderContainer.innerHTML += ''
             + '<div class="folder new-folder">'
             + '    <img onclick="newFolder()" class="folder-img" src="SingingBear.png" alt="New Folder">'
-            + '    <input type="text" id="folder-name-input" placeholder="Name Required">'
             + '</div>'
     }
-// Fills the play-container div with play cards based on the selected folder
+
+    // Fills the play-container div with play cards based on the selected folder
     function openFolder(folder) {
 
         playContainer = document.getElementById("play-container");
@@ -229,7 +229,7 @@
             for (let i = 0; i < playList.length; i++) {
                 playContainer.innerHTML += ''
                     + '<div class="play-card">'
-                    + '    <img class="play-card-image" src="SingingBear.png" alt="Preview" width="200" height="200">'
+                    + '    <img class="play-card-image" src="SingingBear.png" alt="Preview">'
                     + '    <div class="play-card-info">'
                     + '        <p class="play-card-title">' + playList[i].title + '</p>'
                     + '        <p class="play-card-rating">' + playList[i].rating + ' <span style="color: gold;">&#9733;</span></p>'
@@ -243,63 +243,21 @@
         }
     }
 
+    function toggleSocial() {
+        socialDiv = document.getElementById("social-list");
+        arrow = document.getElementById("social-arrow");
+
+        if (window.getComputedStyle(socialDiv).height == "0px") {
+            socialDiv.style.height = "300px";
+            arrow.innerHTML = "&#9660;";
+        }
+        else {
+            socialDiv.style.height = "0px";
+            arrow.innerHTML = "&#9650;";
+        }
+    }
 
     //lists of fake folders full of plays
-    var myFolders = ["My Plays", "Saved Plays", "Sample Folder"];
-    var folder1 = [
-        {
-            "id": "1",
-            "title": "My Plays 1",
-            "rating": "4.7",
-        },
-        {
-            "id": "2",
-            "title": "My Plays 2",
-            "rating": "3.2",
-        },
-        {
-            "id": "3",
-            "title": "My Plays 3",
-            "rating": "5.0",
-        }
-    ];
-
-    var folder2 = [
-        {
-            "id": "1",
-            "title": "Saved Plays 1",
-            "rating": "4.7",
-        },
-        {
-            "id": "2",
-            "title": "Saved Plays 2",
-            "rating": "3.2",
-        },
-        {
-            "id": "3",
-            "title": "Saved Plays 3",
-            "rating": "5.0",
-        }
-    ];
-
-    var folder3 = [
-        {
-            "id": "1",
-            "title": "Sample Plays 1",
-            "rating": "4.7",
-        },
-        {
-            "id": "2",
-            "title": "Sample Plays 2",
-            "rating": "3.2",
-        },
-        {
-            "id": "3",
-            "title": "Sample Plays 3",
-            "rating": "5.0",
-        }
-        
-    ];
 
     loadFolders();
 </script>
