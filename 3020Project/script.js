@@ -1,3 +1,6 @@
+// Field should be dynamic
+let field = 'url("BasketballNBAGoalTop.png")';
+
 // Variables to track the selected tool and other state
 let selectedTool = null;
 let firstClick = null;
@@ -7,8 +10,12 @@ let isOpponentIconSelected = false;
 let isMoveIconSelected = false;
 let isPassIconSelected = false;
 let isDeleteIconSelected = false;
+let isDrawing = false;
+let startX, startY, endX, endY;
 let moveStartIcon = null;
 let passStartIcon = null;
+let context = createCanvas(whiteboard);
+let lines = [];
 
 document.addEventListener('DOMContentLoaded', function () {
   // Attach click event listeners to icons
@@ -25,12 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.getElementById('pass-icon').addEventListener('click', function (event) {
+    isPassIconSelected = true;
+    isDrawing = true;
     selectedTool = 'pass';
     highlightIcon(event.target);
   });
 
   document.getElementById('move-icon').addEventListener('click', function (event) {
     isMoveIconSelected = true;
+    isDrawing = true;
     selectedTool = 'move';
     highlightIcon(event.target);
   });
@@ -60,6 +70,46 @@ document.addEventListener('DOMContentLoaded', function () {
         addOpponentIcon(event.clientX, event.clientY);
         isOpponentIconSelected = false;
       }
+
+      if (selectedTool === 'move' && isMoveIconSelected) {
+        if (moveStartIcon) {
+          // If moveStartIcon is set, draw the arrow
+          const startIcon = moveStartIcon.getBoundingClientRect();
+          drawArrow(moveStartIcon, startIcon.left + startIcon.width/2, startIcon.top + startIcon.height/2, event.clientX, event.clientY, 'move');
+          moveStartIcon = null; // Reset moveStartIcon after drawing the arrow
+          isMoveIconSelected = false; // Reset move icon selection
+          selectedTool = null;
+          unhighlightIcon();
+        } else if (event.target.offsetParent.classList.contains('teammate-icon') || event.target.offsetParent.classList.contains('opponent-icon')) {
+          // If clicking on teammate or opponent icon, set it as the starting point for the move
+          moveStartIcon = event.target.offsetParent;
+        }
+      }
+  
+      if (selectedTool === 'pass') {
+          if (passStartIcon) {
+            // If passStartIcon is set, draw the arrow
+            const startIcon = passStartIcon.getBoundingClientRect();
+            drawArrow(passStartIcon, startIcon.left + startIcon.width/2, startIcon.top + startIcon.height/2, event.clientX, event.clientY, 'pass', event.target.offsetParent);
+            passStartIcon = null; // Reset passStartIcon after drawing the arrow
+            selectedTool = null;
+            unhighlightIcon();
+          } else if (event.target.offsetParent.classList.contains('teammate-icon')) {
+            // If clicking on teammate icon, set it as the starting point for the pass
+            passStartIcon = event.target.offsetParent;
+          }
+      }
+      
+      if (selectedTool === 'delete') {
+          if (event.target.offsetParent.classList.contains('teammate-icon') || event.target.offsetParent.classList.contains('opponent-icon')) {
+            // If clicking on teammate or opponent icon, remove it from the whiteboard
+            event.target.offsetParent.removeChild(event.target);
+            isDeleteIconSelected = false;
+            selectedTool = null;
+            unhighlightIcon();
+          }
+          // You can add additional conditions for other types of elements if needed
+        }
   });
 
   whiteboard.addEventListener('mousedown', function (event) {
@@ -107,46 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });  
-
-  whiteboard.addEventListener('click', function (event) {
-    if (selectedTool === 'move' && isMoveIconSelected) {
-      if (moveStartIcon) {
-        // If moveStartIcon is set, draw the arrow
-        drawArrow(moveStartIcon, event.clientX, event.clientY, 'move');
-        moveStartIcon = null; // Reset moveStartIcon after drawing the arrow
-        isMoveIconSelected = false; // Reset move icon selection
-        selectedTool = null;
-        unhighlightIcon();
-      } else if (event.target.offsetParent.classList.contains('teammate-icon') || event.target.offsetParent.classList.contains('opponent-icon')) {
-        // If clicking on teammate or opponent icon, set it as the starting point for the move
-        moveStartIcon = event.target.offsetParent;
-      }
-    }
-
-    if (selectedTool === 'pass') {
-        if (passStartIcon) {
-          // If passStartIcon is set, draw the arrow
-          drawArrow(passStartIcon, event.clientX, event.clientY, 'pass');
-          passStartIcon = null; // Reset passStartIcon after drawing the arrow
-          selectedTool = null;
-          unhighlightIcon();
-        } else if (event.target.offsetParent.classList.contains('teammate-icon')) {
-          // If clicking on teammate icon, set it as the starting point for the pass
-          passStartIcon = event.target.offsetParent;
-        }
-    }
-    
-    if (selectedTool === 'delete') {
-        if (event.target.offsetParent.classList.contains('teammate-icon') || event.target.offsetParent.classList.contains('opponent-icon')) {
-          // If clicking on teammate or opponent icon, remove it from the whiteboard
-          event.target.offsetParent.removeChild(event.target);
-          isDeleteIconSelected = false;
-          selectedTool = null;
-          unhighlightIcon();
-        }
-        // You can add additional conditions for other types of elements if needed
-      }
-  });
 });
 
 function addTeammateIcon(x, y) {
@@ -202,6 +212,9 @@ function addOpponentIcon(x, y) {
 function handleIconClick(icon) {
     console.log('Icon clicked:', icon);
 
+    if (isDeleteIconSelected) {
+        deleteLinesByIcon(icon);
+    }
     // Implement your logic for handling the click on the icon here
     // You can use the 'icon' parameter to identify which icon was clicked
     // For example, you can check if it's a teammate or opponent icon and perform specific actions.
@@ -219,32 +232,115 @@ function unhighlightIcon() {
   });
 }
 
-function drawArrow(startIcon, endX, endY, arrowType) {
-    console.log('Drawing arrow:', startIcon, endX, endY, arrowType);
-    const draw = SVG().addTo(document.getElementById('whiteboard')).size('100%', '100%');
+function createCanvas(parent) {
+    // Create a canvas element
+    const canvas = document.createElement('canvas');
+    canvas.width = parent.clientWidth;
+    canvas.height = parent.clientHeight;
 
-    // Get the bounding box of the starting icon
-    const startBox = startIcon.getBoundingClientRect();
-    const startX = startBox.left + startBox.width / 2;
-    const startY = startBox.top + startBox.height / 2;
+    // Set the canvas style
+    canvas.style.position = 'absolute';
+    canvas.style.left = '0';
+    canvas.style.top = '0';
+    canvas.style.backgroundColor = 'transparent';
+    canvas.style.backgroundImage = field; // Set the URL of your background image
+    canvas.style.backgroundSize = 'contain'; // Adjust as needed
+    canvas.style.backgroundPositionX = 'center';
+    canvas.style.backgroundRepeat = 'no-repeat';
 
-    const line = draw.line(startX, startY, endX, endY)
-        .stroke({ color: 'black', width: 2 })
-        .css({ 'z-index': 1, 'visibility': 'visible'});
+    // Append the canvas to the parent element
+    parent.innerHTML = '';
+    parent.appendChild(canvas);
 
-    if (arrowType === 'pass') {
-        line.stroke({ dasharray: '5,5' });
-    }
+    const context = canvas.getContext('2d');
+    context.globalCompositeOperation = 'source-over';
 
-    const angle = Math.atan2(endY - startIcon.getBoundingClientRect().top, endX - startIcon.getBoundingClientRect().left) * (180 / Math.PI);
-
-    line.rotate(angle, startIcon.getBoundingClientRect().left, startIcon.getBoundingClientRect().top);
-
-    const arrowhead = draw.polygon('95,50 100,50 95,55').fill('black').rotate(angle, endX, endY).css({ 'z-index': 1, 'visibility': 'visible' });
-    console.log(document.getElementById('whiteboard'))
-    // You can adjust the position and styling as needed
+    return context;
 }
 
+function drawArrow(startIcon, x1, y1, x2, y2, mode, endIcon) {
+    const arrowSize = 10; // Adjust arrowhead size as needed
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const angle = Math.atan2(dy, dx);
+
+    // Calculate coordinates for the arrowhead
+    const arrowheadX1 = x2 - arrowSize * Math.cos(angle - Math.PI / 6);
+    const arrowheadY1 = y2 - arrowSize * Math.sin(angle - Math.PI / 6);
+    const arrowheadX2 = x2 - arrowSize * Math.cos(angle + Math.PI / 6);
+    const arrowheadY2 = y2 - arrowSize * Math.sin(angle + Math.PI / 6);
+
+    context.beginPath();
+
+    // Move to the starting point of the line
+    context.moveTo(x1, y1);
+
+    // Draw the line
+    context.lineTo(x2, y2);
+
+    // Draw the arrowhead
+    context.lineTo(arrowheadX1, arrowheadY1);
+    context.moveTo(x2, y2);
+    context.lineTo(arrowheadX2, arrowheadY2);
+
+    context.closePath();
+
+    if (mode === 'move') {
+        context.stroke(); // Use stroke for solid line
+    } else if (mode === 'pass') {
+        // Set the line dash pattern for a dashed line
+        context.setLineDash([5, 5]); // Adjust the values as needed for the dash pattern
+        context.stroke();
+        // Reset the line dash to solid for subsequent drawings
+        context.setLineDash([]);
+    }
+
+    lines.push({
+        startIcon: startIcon,
+        endIcon: endIcon,
+        x1: x1,
+        y1: y1,
+        x2: x2,
+        y2: y2,
+        mode: mode
+    });
+}
+
+function redrawLines() {
+    // Clear the canvas
+    context.clearRect(0,0,10000,10000);
+
+    // Loop through lines and redraw them
+    lines.forEach(line => {
+        drawArrow(line.startIcon, line.x1, line.y1, line.x2, line.y2, line.mode, line.endIcon);
+    });
+}
+
+function deleteLinesByIcon(icon) {
+    // Remove lines associated with the icon
+    lines = lines.filter(line => line.startIcon !== icon && line.endIcon !== icon);
+
+    // Redraw the updated lines
+    redrawLines();
+}
+
+function updateLinesOnIconDrag(icon) {
+    const iconRect = icon.getBoundingClientRect();
+
+    // Loop through lines and update positions associated with the dragged icon
+    lines.forEach(line => {
+        if (line.startIcon === icon) {
+            line.x1 = iconRect.left + iconRect.width / 2;
+            line.y1 = iconRect.top + iconRect.height / 2;
+        } else if (line.endIcon === icon) {
+            line.x2 = iconRect.left + iconRect.width / 2;
+            line.y2 = iconRect.top + iconRect.height / 2;
+        }
+    });
+
+    // Redraw the updated lines
+    redrawLines();
+}
 
 function showPopup() {
   // Implement showing the save popup
