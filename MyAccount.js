@@ -24,7 +24,7 @@ function newFolder() {
 
 // loads the folders into the folder-container div as well as the add new folder button & input
 function loadFolders() {
-    folderContainer = document.getElementById("folder-container");
+    let folderContainer = document.getElementById("folder-container");
     folderContainer.innerHTML = "";
     for (let i = 0; i < folders.length; i++) {
         folderContainer.innerHTML += ''
@@ -43,7 +43,7 @@ function loadFolders() {
 // Fills the play-container div with play cards based on the selected folder
 function openFolder(id) {
 
-    playContainer = document.getElementById("play-container");
+    let playContainer = document.getElementById("play-container");
     playContainer.innerHTML = "";
 
     folder = folders.find(e => e.id == id);
@@ -55,7 +55,7 @@ function openFolder(id) {
         for (let i = 0; i < plays.length; i++) {
             if (folder.plays.includes(plays[i].play_id)) {
                 playContainer.innerHTML += ''
-                    + '<div onclick="" class="play-card">'
+                    + '<div onclick="window.location.href=\'playdescription.html\'" class="play-card">'
                     + '    <img class="play-card-image" src="' + plays[i].image_url + '" alt="Play Preview">'
                     + '    <div class="play-card-info">'
                     + '        <p class="play-card-title">' + plays[i].play_name + '</p>'
@@ -76,8 +76,8 @@ function hideNewFolderPopup() {
 }
 
 function toggleSocial() {
-    socialDiv = document.getElementById("social-list");
-    arrow = document.getElementById("social-arrow");
+    let socialDiv = document.getElementById("social-dropdown");
+    let arrow = document.getElementById("social-arrow");
 
     if (window.getComputedStyle(socialDiv).height == "0px") {
         socialDiv.style.height = "300px";
@@ -89,6 +89,34 @@ function toggleSocial() {
     }
 }
 
+function loadFriends() {
+    let list = document.getElementById("friends-list");
+    list.innerHTML = "";
+
+    for(let friend of friends){
+        list.innerHTML += '\n<button onclick="window.alert(\'Coming Soon!\')">' + friend + '</button>'
+    }
+}
+
+function addFriend() {
+    let input = document.getElementById("add-friend-input");
+
+    if(input.value == "")
+    {
+        window.alert("Field cannot be empty!");
+    }
+    else if(friends.includes(input.value)) {
+        window.alert("You're already friends with " + input.value + "!");
+    }
+    else {
+        friends.push(input.value);
+        loadFriends();
+    }
+}
+
 //lists of fake folders full of plays
 
+var friends = ["Aaryaman", "Brian", "Ivory", "Jiazhen", "Zachary"]
+
 loadFolders();
+loadFriends();

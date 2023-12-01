@@ -1,59 +1,55 @@
+button {
+    padding: 10px;
+    background-color: whitesmoke;
+    border: none;
+}
+
 button:hover {
     cursor: pointer;
     opacity: 0.7;
 }
 
-#header-bar {
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-
-    height: fit-content;
-    padding: 10px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background-color: red;
-}
-
-#navigation {
-    display: flex;
-}
-
 #user-info {
-    margin-top: 5%;
-    height: 20%;
+    height: 10%;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: left;
 
-    background-color: orange;
+    box-shadow: 2px 2px 10px lightgray;
+}
+
+#profile-img {
+    height: 80%;
+    object-fit: contain;
+    margin: 20px;
+
+    background-color: white;
+    border: 5px solid lightgray;
+    border-radius: 50%;
 }
 
 #folder-container {
 
-    width: 100%;
-    height: 25%;
+    width: 95%;
+    height: 15%;
+    min-height: 200px;
+    margin: 2.5%;
 
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
 
-    background-color: yellow;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px lightgray;
 }
 
 .folder {
 
-
     width: fit-content;
     min-width: 100px;
-    height: 50%;
+    height: 95%;
     padding: 2.5%;
 
     text-align: center;
@@ -73,25 +69,32 @@ button:hover {
 }
 
 #play-container {
-    height: 50%;
-    width: 100%;
+    height: 45%;
+    width: 95%;
+    margin: 2.5%;
 
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
 
-    background-color: green;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px lightgray;
 }
 
 .play-card {
     width: 13.66%;
+    min-width: 115px;
     height: fit-content;
     margin: 1.5%;
 
-    background-color: blue;
+    box-shadow: 2px 2px 10px lightgray;
 
-    transition: opacity 0.2s;
+    transition: box-shadow 0.2s;
+}
+
+.play-card:hover {
+    box-shadow: 2px 2px 10px gray;
 }
 
 .play-card-image {
@@ -106,6 +109,7 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     background-color: lightgray;
+    white-space: nowrap;
 }
 
 #new-folder-popup {
@@ -115,12 +119,14 @@ button:hover {
 
     display:none;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
 
-    background-color: purple;
+    background-color: lightgray;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px gray;
 }
 
 #social-menu {
@@ -132,7 +138,8 @@ button:hover {
     margin: 50px;
     align-items: center;
 
-    background-color: pink;
+    background-color: lightgray;
+    box-shadow: 2px 2px 10px gray;
 }
 
 #social-drop-btn {
@@ -142,26 +149,54 @@ button:hover {
 
     display: flex;
     justify-content: space-between;
+    margin: auto;
 }
 
-#social-list {
+#social-dropdown {
     height: 0px;
     width: 200px;
 
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    align-items: center;
+
+    background-color: white;
 
     transition: height 0.4s;
 }
 
-footer {
-    padding: 10px;
+#add-friend {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
 }
 
-a {
-    display:block;
+#add-friend-input {
+    width: 80%;
+}
 
+#add-friend-btn {
+    width: 20%;
+}
+
+#friends-list {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+footer {
+    height: 5%;
+}
+
+.footer-link {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     color: gray;
     text-decoration: none;
 }
