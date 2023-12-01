@@ -1,30 +1,10 @@
 // script.js
 
-// import data from `./plays.json` assert { type: `json` };
-
-
-// const { default: info } = await import("./plays.json", {
-//   assert: {
-//     type: "json",
-//   },
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Function to fetch and use JSON data
-    // function fetchPlaysData() {
-    //     // Fetch the JSON file
-    //     fetch('file://plays.json')
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             this.plays = data;
-    //             this.tempPlays = data;
-    //             generateGridContent(data);
-    //         })
-    //         .catch(error => console.error('Error fetching plays.json:', error));
-    // }
-
+    
     generateGridContent(plays);
-    // fetchPlaysData();
+
 });
 
 
@@ -99,6 +79,19 @@ function clearContent() {
     container.innerHTML = '';
 }
 
+function errorMessage(message) {
+    var container = document.getElementById("cardContainer");
+
+    var card = document.createElement("div");
+    card.classList.add("message");
+
+    card.innerHTML = `
+        <h1 class = "justify-content-center"> ${message} </h1>
+    `;
+    
+    container.appendChild(card);
+}
+
 function sortByName(){
     let sorts = tempPlays;
 
@@ -123,7 +116,6 @@ function sortByName(){
 
 }
 function updateText(text){
-    sportNameText
     document.getElementById('sportNameText').innerHTML = text;
 
 }
@@ -134,11 +126,12 @@ function searchByPlayName(){
     
     if(userInput.length > 1)
     {
-        const search = plays.filter(play => play.play_name.toLowerCase() === userInput.toLowerCase());
+        const search = plays.filter(play => play.play_name.toLowerCase().includes(userInput.toLowerCase()));
 
         clearContent();
     
         generateGridContent(search);
+
     }
     
 }
@@ -154,12 +147,19 @@ function compareStrings(a, b) {
   function filterByTag(tagName){
 
     const filteredPlays = tempPlays.filter(play => play.tags.includes(tagName));
+    if(filteredPlays.length >0)
+    {
+        tempPlays = filteredPlays;
 
-    tempPlays = filteredPlays;
+        clearContent();
 
-    clearContent();
-
-    generateGridContent(filteredPlays);
+        generateGridContent(filteredPlays);
+    }
+    else{
+        clearContent();
+        errorMessage("No Plays Found with Tag as : " + tagName);
+    }
+    
   }
 
   function redirect(id){
@@ -170,7 +170,7 @@ function compareStrings(a, b) {
 
     localStorage.setItem("data",JSON.stringify(selected));
 
-    // window.location.href = 'login.html';
+    window.location.href = 'play-description.html';
 
   }
 
