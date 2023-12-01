@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
 function generateStars(rating) {
     var stars = '';
     for (var i = 1; i <= 5; i++) {
@@ -126,10 +125,11 @@ function searchByPlayName(){
     
     if(userInput.length > 1)
     {
-        const search = plays.filter(play => play.play_name.toLowerCase().includes(userInput.toLowerCase()));
+        const search = plays.filter(play => play.play_name.toLowerCase() .includes(userInput.toLowerCase()));
+
+        console.log("hello");
 
         clearContent();
-    
         generateGridContent(search);
 
     }
@@ -211,20 +211,6 @@ function compareStrings(a, b) {
 
     // }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   var plays = [
     {

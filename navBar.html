@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./navBar.html">Pro-Coach</a>
+            <a class="navbar-brand" href="./index.html">Pro-Coach</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -30,14 +30,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 
+              <button type="button" class="btn btn-outline-secondary ms-5">
+                <a href="./navBar.html" ></a>
+                  Library
+                  <i class="bi bi-collection"></i>
+              </button>
+            
                 <button type="button" class="btn btn-info ms-5">
                   <a href="./index.html" onclick="window.location.href='./index.html'" ></a>
                     Create Your Own Play
                     <i class="bi bi-plus-circle"></i>
                 </button>
                 
-                <button  type="button" class="btn btn-outline-secondary ms-5" onclick="window.location.href='./index.html'">
-
+                <button  type="button align-content-centre" class="btn btn-outline-secondary ms-5" onclick="window.location.href='./index.html'">
                     <i class="bi bi-person-circle" style="font-size: 1.3rem;"></i>
                     My Account
                 </button>
@@ -72,10 +77,10 @@
                       </ul>
                 </div>
                 
-                <form class="d-flex ms-5" role="search" >
+                <div class = "d-flex ms-5">
                   <input class="form-control me-2" type="search" placeholder="Search By Play Name" aria-label="Search" id = "search-text">
-                  <button class="btn btn-outline-success" type="submit" onclick="searchByPlayName()">Search</button>
-                </form>
+                  <button class="btn btn-outline-success"  onclick="searchByPlayName()">Search</button>
+                </div>
 
                 
                 <div class="dropdown ms-5 ">
@@ -113,6 +118,5 @@
             
     </div>
 
-    
 </body>
 </html>
