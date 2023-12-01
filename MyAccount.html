@@ -24,14 +24,9 @@
                   <!-- need-address -->
                <li><a href="library.html" class="logo" ><span>PRO COACH</span>
                    <img class="small-logo" src="./img/clipboard-regular.svg" alt="ERROR"></a></li>
-               <li><a href="#" onclick="showContent('soccer'); return false;" class="select"><span>Soccer</span>
-                   <img class="small-sport" src="./img/futbol-solid.svg" alt="ERROR"></a></li>
-               <li><a href="#" onclick="showContent('basketball'); return false; "class="select"><span>Basketball</span>
-                   <img class="small-sport" src="./img/basketball-solid.svg" alt="ERROR"></a></li>
-               <li><a href="#" onclick="showContent('football'); return false;" class="select"><span>Football</span>
-                   <img class="small-sport" src="./img/football-solid.svg" alt="ERROR"></a></li>
-               <li><a href="#" onclick="showContent('hockey'); return false;" class="select"><span>Hockey</span>
-                   <img class="small-sport" src="./img/hockey-puck-solid.svg" alt="ERROR"></a></li>
+               <li><a href="library.html" class="select" ><span>Library</span>
+                    <img class="small-logo" src="./img/folder-open-regular.svg" alt="ERROR"></a></li>
+  
              
            </ul>
         <!-- top-mid-search -->
@@ -85,109 +80,105 @@
     button:hover {
         cursor: pointer;
     }
+    body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
 
+        #user-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+           
+        }
 
+        #profile-img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-  
+        h1 {
+            margin: 0;
+            background-color: transparent; /* No background color for the title */
+        }
 
-  
+        #folder-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
 
-   
+        .folder {
+            cursor: pointer;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
 
-    #profile-img {
-        padding: 10px;
-    }
+        .folder-img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
 
-    #user-info {
-        padding: 20px;
+        .folder.new-folder {
+            background-color: #a0a0a0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-        display: flex;
-        align-items: center;
-        justify-content: left;
-    }
+        #folder-name-input {
+            margin-top: 5px;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
 
-    #folder-container {
-        height: 1fr;
-        box-shadow: inset 2px 2px 10px lightgray;
-        border-radius: 5px;
+        #play-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
 
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-    }
+        .play-card {
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
 
-    .folder {
-        background-color: transparent;
+        .play-card-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+        }
 
-        text-align: center;
-        width: fit-content;
-        height: fit-content;
+        .play-card-info {
+            margin-top: 10px;
+        }
 
-        margin:20px;
-    }
+        .play-card-title {
+            margin: 0;
+            font-weight: bold;
+        }
 
-    .folder-img {
-        height: 100px;
-        width: 100px;
+        .play-card-rating {
+            margin: 0;
+            color: #007bff; /* Blue color for better visibility */
+        }
 
-        transition: opacity 0.2s;
-    }
-
-    .folder-img:hover {
-        opacity: 0.8;
-    }
-
-    .folder-img:focus {
-        box-shadow: 2px 2px 10px lightgray;
-    }
-
-    .folder-name-input {
-        display: block;
-    }
-
-    #play-container {
-        padding: 10px;
-        height: 600px;
-        box-shadow: inset 2px 2px 10px lightgray;
-        border-radius: 5px;
-
-        display: flex;
-        justify-content: left;
-        flex-wrap: wrap;
-        overflow-y: scroll;
-
-    }
-
-    .play-card {
-        width: fit-content;
-        height: fit-content;
-        box-shadow: 2px 2px 10px lightgray;
-        border-radius: 5px;
-        margin: 40px;
-
-        transition: opacity 0.2s;
-    }
-
-    .play-card:hover {
-        opacity: 0.8;
-    }
-
-    .play-card:active {
-        box-shadow: 2px 2px 10px gray;
-    }
-
-    .play-card-img {
-        image-rendering: pixelated;
-    }
-
-    .play-card-info {
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: lightgray;
-    }
+        .star {
+            color: gold;
+        }
 </style>
 
 <script>

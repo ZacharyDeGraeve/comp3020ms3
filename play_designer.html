@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/medal-solid.svg">
+    <link rel="stylesheet" href="./css/libraryTopTest.css">
+    <link rel="stylesheet" href="./css/base.css">
     <title>Sport Play Editor</title>
     <style>
         body {
@@ -49,6 +51,12 @@
         #whiteboard-container {
             flex-grow: 1;
             position: relative;
+            max-width: 100%;
+            height: auto;
+        }
+        .whiteboard-container .img{
+            max-width: 100%;
+            height: auto;
         }
 
         .whiteboard {
@@ -96,6 +104,12 @@
             font-weight: bold;
             padding: 10px; /* Add padding to the button */
         }
+        .back-button{
+            margin-top: auto; /* Push the Save button to the bottom of the sidebar */
+            font-size: 16px; /* Increase the font size */
+            font-weight: bold;
+            padding: 10px; /* Add padding to the button */
+        }
 
         #divider-bar {
             width: 100%;
@@ -107,6 +121,48 @@
     </style>
 </head>
 <body>
+       <!-- top -->
+       <div class="top">
+        <!-- top-left-select -->
+           <div class="top-left">
+           <ul class="top-left-entry">
+                  <!-- need-address -->
+               <li><a href="library.html" class="logo" ><span>PRO COACH</span>
+                   <img class="small-logo" src="./img/clipboard-regular.svg" alt="ERROR"></a></li>
+               <li><a href="library.html" class="select" ><span>Library</span>
+                    <img class="small-logo" src="./img/folder-open-regular.svg" alt="ERROR"></a></li>
+  
+             
+           </ul>
+        <!-- top-mid-search -->
+           <div class="top-mid-search">
+               
+               <!-- search-content -->
+           <div class="search-content">
+               <input type="text" class="search-content-input" id="searchInput" placeholder="Please enter a tactical name...">
+           </div>
+           <!-- search-button-->
+           <div class="search-button">
+                 <!-- need-address -->
+                 <button class="search-button" onclick="showIncompleteMessage()">
+                   <img class="small-search" src="./img/magnifying-glass-solid.svg" alt="">
+        </button>
+           </div>
+       </div>
+           <!-- top-right-creat&account -->
+           <ul class="top-right-entry">
+           <!-- need-address -->
+               <li class="right-entry"><a href="play_designer.html"><span>Create</span>
+                   </a></li>
+               <li class="right-entry"><a href="MyAccount.html"><span>Account</span>
+                   </a></li>
+               <li class="right-entry"><a href="library.html"><span>LoginOut</span>
+                   </a></li>
+           </ul>
+       </div>
+           <!-- banner -->
+   
+   </div>
 
 <div id="editor-container">
     <div id="sidebar">
@@ -129,7 +185,7 @@
         <!-- Save button at the bottom of the sidebar -->
         <button id="save-button" onclick="openSaveModal()">Save</button>
 
-        <button id="save-button" onclick="location.href='library.html'">Back</button>
+
     </div>
     <div id="whiteboard-container">
         <img class="whiteboard soccer" src="SoccerGoalTop.png" alt="Soccer Field" onclick="placeIcon(event)">

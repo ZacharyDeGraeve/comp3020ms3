@@ -65,8 +65,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    margin-left: 200px;
-    margin-right: 300px;
+
     
 }
 .top-mid-search:hover{
@@ -127,6 +126,65 @@
     margin-left: 10px;
     font-weight: bold;
 }
+/*default*/
+.defaultMessage{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px green;
+}
+.button-container {
+    display: flex;
+    justify-content: center; /* 将内容水平居中 */
+    align-items: center; /* 将内容垂直居中 */
+    margin-top: 30px;
+
+}
+
+.button-container .selectbutton{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #b2d8b2;
+    border: none;
+    color: black;
+    font-weight: bold;
+
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 16px;
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.selectbutton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .selectbutton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  .selectbutton:hover span {
+    padding-right: 25px;
+  }
+  
+  .selectbutton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
 
 
 
@@ -138,6 +196,9 @@
     padding: 0 60px;
     box-sizing: border-box;
     overflow: hidden;
+}
+.main .sportTittle .small-sport{
+    margin-left: 6px;
 }
 
 .main .sportTittle{
@@ -190,10 +251,8 @@
 color: #9499a0;
 display: flex;
 align-items: center;
+
 }
-.picture-bottom span{
-margin-right: 5px;
-    }
 
 
 
