@@ -15,24 +15,20 @@
     <link rel="stylesheet" href="navBar.css">
     <style>
         body {
-            /* font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif;
+            /* height: 100vh; */
+            width: 100vw;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex; */
-        }
-
-        #editor-container {
-            display: flex;
-            height: 100%;
         }
 
         #sidebar {
-            width: 75px;
+            width: 120px;
             background-color: #f1f1f1;
             padding: 20px;
             position: fixed;
             height: 100%;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -41,12 +37,11 @@
         }
 
         .icon {
-            width: 40px;
+            width: 30px;
             /* Adjust the width of icons */
-            height: 40px;
+            height: 30px;
             /* Adjust the height of icons */
             cursor: pointer;
-            margin-bottom: 5px;
         }
 
         .selected-icon {
@@ -56,7 +51,7 @@
         .label {
             font-size: 12px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         #icons-label {
@@ -66,26 +61,17 @@
 
         #save-button {
             margin-top: auto;
-            margin-bottom: 50%;
+            margin-bottom: 75%;
             font-size: 16px;
             font-weight: bold;
             padding: 10px;
         }
 
         #whiteboard {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            display: flex;
             flex-grow: 1;
             position: relative;
             overflow: hidden;
-        }
-
-        #goal-top {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: auto;
             height: 100vh;
         }
 
@@ -96,12 +82,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .whiteboard.active {
-            display: block;
+            /* width: 100%; */
+            height: 100vh;
         }
 
         .whiteboard-icon {
@@ -174,14 +156,11 @@
         #save-modal button {
             margin-bottom: 10px;
         }
-
-        .drawing-mode {
-            border: 2px solid #3498db;
-        }
     </style>
 </head>
 
 <body>
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../index.html">Pro-Coach</a>
@@ -212,31 +191,34 @@
             </div>
         </nav>
     
-    <div id="whiteboard">
-        <!-- Whiteboard area where icons will be added -->
-        <!-- Additional whiteboard elements will be added here dynamically -->
-    </div>
+        <div class="container-fluid">
+            <div id="sidebar">
+                <!-- Icons for teammate, opponent, pass, move, delete/undo -->
+                <div id="icons-label">Icons</div>
+                <img id="teammate-icon" class="icon" src="teammate.png" alt="Teammate">
+                <span class="label">Teammate</span>
 
-    <div id="sidebar">
-        <!-- Icons for teammate, opponent, pass, move, delete/undo -->
-        <div id="icons-label">Icons</div>
-        <img id="teammate-icon" class="icon" src="teammate.png" alt="Teammate">
-        <span class="label">Teammate</span>
+                <img id="opponent-icon" class="icon" src="opponent.png" alt="Opponent">
+                <span class="label">Opponent</span>
 
-        <img id="opponent-icon" class="icon" src="opponent.png" alt="Opponent">
-        <span class="label">Opponent</span>
+                <img id="pass-icon" class="icon" src="pass.png" alt="Pass">
+                <span class="label">Pass</span>
 
-        <img id="pass-icon" class="icon" src="pass.png" alt="Pass">
-        <span class="label">Pass</span>
+                <img id="move-icon" class="icon" src="move.png" alt="Move">
+                <span class="label">Move</span>
 
-        <img id="move-icon" class="icon" src="move.png" alt="Move">
-        <span class="label">Move</span>
+                <img id="delete-icon" class="icon" src="Delete.png" alt="Delete">
+                <span class="label">Delete</span>
+                <!-- Save button -->
+                <hr>
+                <button id="save-button">Save</button>
+            </div>
 
-        <img id="delete-icon" class="icon" src="Delete.png" alt="Delete">
-        <span class="label">Delete</span>
-        <!-- Save button -->
-        <hr>
-        <button id="save-button">Save</button>
+            <div id="whiteboard">
+                <!-- Whiteboard area where icons will be added -->
+                <!-- Additional whiteboard elements will be added here dynamically -->
+            </div>
+        </div>
     </div>
 
     <!-- Popup for saving -->

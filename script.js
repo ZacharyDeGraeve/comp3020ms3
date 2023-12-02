@@ -1,6 +1,5 @@
 // script.js
 
-
 document.addEventListener("DOMContentLoaded", function () {
     
     generateGridContent(plays);
@@ -215,139 +214,138 @@ function compareStrings(a, b) {
   var plays = [
     {
         "play_id": 1,
-        "play_name": "Play 1",
+        "play_name": "Shotgun",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football2.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Coach Wilson",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Wow what a great play for my high school team!",
+            "Just like TB12"
         ],
         "tags": [
             "Offensive",
-            "Tag 2",
-            "Tag3"
+            "Shotgun",
+            "Throwing"
         ]
     },
     {
         "play_id": 2,
-        "play_name": "Play 2",
+        "play_name": "Triangle #3",
         "sport": "Basketball",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/basketball2.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Coach Carter",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "My youth team couldn't figure it out",
+            "Love this play do recommend"
         ],
         "tags": [
             "Offensive",
-            "Tag 2",
-            "Tag3"
+            "Triangle",
+            "Post"
         ]
     },
 
     {
         "play_id": 6,
-        "play_name": "Play 6",
+        "play_name": "Triangle #5",
         "sport": "Basketball",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/basketball3.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Coach Carter",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Coach Carter is an awesome movie!",
+            "Plays pretty sweet too my high school team used to do this"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Post",
+            "Pin-Down",
+            "Triangle"
         ]
     },
     {
         "play_id": 7,
-        "play_name": "Play 7",
+        "play_name": "Russian Cycle",
         "sport": "Ice Hockey",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/hockey3.jpeg",
+        "rating": 5.0,
+        "created_by": "Herb Brookes",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Just keep cycling until they're tired",
+            "Great for a team with lots of speed but poor passing"
         ],
         "tags": [
             "Offensive",
-            "Tag 2",
-            "Tag3"
+            "Cycle",
+            "5-on-5"
         ]
     },
     {
         "play_id": 8,
-        "play_name": "Play 8",
+        "play_name": "Through Pass",
         "sport": "Soccer",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/soccer3.jpeg",
+        "rating": 3.5,
+        "created_by": "Messi#1",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "I don't know a lot about soccer",
+            "I play the fifa video games and do this on there"
         ],
         "tags": [
-            "Defensive",
-            "Tag 2",
-            "Tag3"
+            "Defense",
+            "Zone"
         ]
     },
 
 
     {
         "play_id": 3,
-        "play_name": "Play 3",
+        "play_name": "PowerPlay BD",
         "sport": "Ice Hockey",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/hockey2.jpeg",
+        "rating": 4.0,
+        "created_by": "Herb Brookes",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "If we played 'em 10 times they might beat us 9 but not this GAME",
+            "We will play like the Russians"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Offensive",
+            "PowerPlay",
+            "Miracle"
         ]
     },
     {
         "play_id": 4,
-        "play_name": "Play 4",
+        "play_name": "Movement",
         "sport": "Soccer",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/soccer1.jpeg",
+        "rating": 1.6,
+        "created_by": "Ronaldo",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Just running around it's silly",
+            ""
         ],
         "tags": [
-            "Tag 1",
+            "Offensive",
             "Tag 2",
             "Tag3"
         ]
     },
     {
         "play_id": 5,
-        "play_name": "Play 5",
+        "play_name": "Blue 42",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football1.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "ChiefsFan4Life",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
+            "Offensive",
             "Tag 2",
             "Tag3"
         ]
@@ -359,77 +357,77 @@ function compareStrings(a, b) {
 
     {
         "play_id": 9,
-        "play_name": "Play 9",
+        "play_name": "Double Fake",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football2.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "jack",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
+            "Offensive",
             "Tag 2",
             "Tag3"
         ]
     },
     {
         "play_id": 10,
-        "play_name": "Play 10",
+        "play_name": "Horns Wrinkle",
         "sport": "Basketball",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/basketball3.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Lebron",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Offensive",
+            "Horns",
+            "Flare"
         ]
     },
     {
         "play_id": 11,
-        "play_name": "Play 11",
+        "play_name": "Corner",
         "sport": "Soccer",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/soccer2.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Ronaldo",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Set Piece",
+            "Corner",
+            "Offensive"
         ]
     },
     {
         "play_id": 12,
-        "play_name": "Play 12",
+        "play_name": "Mahomes",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football1.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Patrick",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Offensive",
+            "Play Action",
+            "Throwing"
         ]
     },
     {
         "play_id": 13,
-        "play_name": "Play 13",
+        "play_name": "Blind Pig",
         "sport": "Basketball",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/basketball3.jpeg",
         "rating": 3.0,
         "created_by": "Person Name",
         "comments": [
@@ -437,133 +435,128 @@ function compareStrings(a, b) {
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Triangle",
+            "Offensive"
         ]
     },
     {
         "play_id": 14,
-        "play_name": "Play 14",
+        "play_name": "Ovi",
         "sport": "Ice Hockey",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/hockey1.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Sid the Kid",
         "comments": [
             "First Comment will go here",
             "Second Comment will go here"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "One Timer",
+            "Offensive",
+            "PowerPlay"
         ]
     },
     {
         "play_id": 15,
-        "play_name": "Play 15",
+        "play_name": "Penalty",
         "sport": "Soccer",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/soccer1.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Penaldo",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Are there actually set plays for a penalty kick I'm not sure?",
+            "Anotha one"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Offensive",
+            "Set Piece",
+            "Penalty"
         ]
     },
     {
         "play_id": 16,
         "play_name": "Play 16",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football1.jpeg",
         "rating": 3.0,
-        "created_by": "Person Name",
+        "created_by": "Gronk",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "I'm quickly running out of ideas or good jokes to put on here",
+            "Throw them the short toss"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Lob",
+            "Screen Play",
+            "Offensive"
         ]
     },
     {
         "play_id": 17,
-        "play_name": "Play 17",
+        "play_name": "2-3 Zone",
         "sport": "Basketball",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/basketball1.jpeg",
+        "rating": 3.3,
+        "created_by": "Joel",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Zones are bad for giving up offensive rebounds",
+            "Works great on my youth team!!!"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Zone",
+            "Defensive"
         ]
     },
     {
         "play_id": 18,
-        "play_name": "Play 18",
+        "play_name": "Penalty Kill Diamond",
         "sport": "Ice Hockey",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/hockey1.jpeg",
+        "rating": 4.0,
+        "created_by": "Ryan",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Need big players to pull this off",
+            "Gotta be patient in this one"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "PK",
+            "Defensive",
+            "5-on-4"
         ]
     },
     {
         "play_id": 19,
-        "play_name": "Play 19",
+        "play_name": "Cross",
         "sport": "Soccer",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
-        "rating": 3.0,
-        "created_by": "Person Name",
+        "image_url": "images/soccer2.jpeg",
+        "rating": 4.1,
+        "created_by": "Messi#1",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here",
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Take away the cross!",
+            "Goooooooooaaaaaaaaaallllllllllll",
+            "Anotha one",
+            "Work smarter not harder"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Defensive"
         ]
     },
     {
         "play_id": 20,
-        "play_name": "Play 20",
+        "play_name": "Full blitz",
         "sport": "Football",
-        "image_url": "./Screenshot 2023-11-23 at 23.02.23.png",
+        "image_url": "images/football2.jpeg",
         "rating": 5.0,
-        "created_by": "Person Name",
+        "created_by": "George Washington",
         "comments": [
-            "First Comment will go here",
-            "Second Comment will go here"
+            "Sacks all day",
+            "Shut down the run game"
         ],
         "tags": [
-            "Tag 1",
-            "Tag 2",
-            "Tag3"
+            "Defensive",
+            "Blitz"
         ]
     }
-]
+];
 
 
 

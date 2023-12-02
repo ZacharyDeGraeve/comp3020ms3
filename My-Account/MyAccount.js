@@ -55,7 +55,7 @@ function openFolder(id) {
         for (let i = 0; i < plays.length; i++) {
             if (folder.plays.includes(plays[i].play_id)) {
                 playContainer.innerHTML += ''
-                    + '<div onclick="window.location.href=\'playdescription.html\'" class="play-card">'
+                    + '<div onclick="redirectPage(' + plays[i].play_id + ')" class="play-card" id = "' + plays[i].play_id + '">'
                     + '    <img class="play-card-image" src="' + plays[i].image_url + '" alt="Play Preview">'
                     + '    <div class="play-card-info">'
                     + '        <p class="play-card-title">' + plays[i].play_name + '</p>'
@@ -67,14 +67,17 @@ function openFolder(id) {
     }
 }
 
+// Shows the popup for naming and creating a new folder
 function showNewFolderPopup() {
     document.getElementById("new-folder-popup").style.display = "block";
 }
 
+// Hides the popup for naming and creating a new folder
 function hideNewFolderPopup() {
     document.getElementById("new-folder-popup").style.display = "none";
 }
 
+//Toggles the dropdown portion of the social menu
 function toggleSocial() {
     let socialDiv = document.getElementById("social-dropdown");
     let arrow = document.getElementById("social-arrow");
@@ -89,6 +92,7 @@ function toggleSocial() {
     }
 }
 
+// Populates the friends list dropdown from an array of friends
 function loadFriends() {
     let list = document.getElementById("friends-list");
     list.innerHTML = "";
@@ -98,6 +102,7 @@ function loadFriends() {
     }
 }
 
+// Adds a new friend to the array of friends
 function addFriend() {
     let input = document.getElementById("add-friend-input");
 
@@ -114,9 +119,17 @@ function addFriend() {
     }
 }
 
-//lists of fake folders full of plays
+function redirectPage(play_id){
+    const selected = plays.filter(play => play.play_id === play_id);
 
+    localStorage.setItem("data",JSON.stringify(selected));
+
+    window.location.href = '../play-description.html';
+}
+
+// Array of friends
 var friends = ["Aaryaman", "Brian", "Ivory", "Jiazhen", "Zachary"]
 
+// Populate folders and friends list on load
 loadFolders();
 loadFriends();
