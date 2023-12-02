@@ -67,14 +67,17 @@ function openFolder(id) {
     }
 }
 
+// Shows the popup for naming and creating a new folder
 function showNewFolderPopup() {
     document.getElementById("new-folder-popup").style.display = "block";
 }
 
+// Hides the popup for naming and creating a new folder
 function hideNewFolderPopup() {
     document.getElementById("new-folder-popup").style.display = "none";
 }
 
+//Toggles the dropdown portion of the social menu
 function toggleSocial() {
     let socialDiv = document.getElementById("social-dropdown");
     let arrow = document.getElementById("social-arrow");
@@ -89,6 +92,7 @@ function toggleSocial() {
     }
 }
 
+// Populates the friends list dropdown from an array of friends
 function loadFriends() {
     let list = document.getElementById("friends-list");
     list.innerHTML = "";
@@ -98,6 +102,7 @@ function loadFriends() {
     }
 }
 
+// Adds a new friend to the array of friends
 function addFriend() {
     let input = document.getElementById("add-friend-input");
 
@@ -114,9 +119,9 @@ function addFriend() {
     }
 }
 
-//lists of fake folders full of plays
-
+// Array of friends
 var friends = ["Aaryaman", "Brian", "Ivory", "Jiazhen", "Zachary"]
 
+// Populate folders and friends list on load
 loadFolders();
 loadFriends();
