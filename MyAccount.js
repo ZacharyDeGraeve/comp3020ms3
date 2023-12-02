@@ -55,7 +55,7 @@ function openFolder(id) {
         for (let i = 0; i < plays.length; i++) {
             if (folder.plays.includes(plays[i].play_id)) {
                 playContainer.innerHTML += ''
-                    + '<div onclick="window.location.href=\'playdescription.html\'" class="play-card">'
+                    + '<div onclick="redirectPage(' + plays[i].play_id + ')" class="play-card" id = "' + plays[i].play_id + '">'
                     + '    <img class="play-card-image" src="' + plays[i].image_url + '" alt="Play Preview">'
                     + '    <div class="play-card-info">'
                     + '        <p class="play-card-title">' + plays[i].play_name + '</p>'
@@ -117,6 +117,14 @@ function addFriend() {
         friends.push(input.value);
         loadFriends();
     }
+}
+
+function redirectPage(play_id){
+    const selected = plays.filter(play => play.play_id === id);
+
+    localStorage.setItem("data",JSON.stringify(selected));
+
+    window.location.href = '../play-description.html';
 }
 
 // Array of friends
