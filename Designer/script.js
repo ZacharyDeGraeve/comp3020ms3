@@ -1,5 +1,5 @@
 // Field should be dynamic
-let field = 'url("FootballNFLRedZoneOffense.png")';
+let field = 'url("BasketballNBAGoalTop.png")';
 
 // Variables to track the selected tool and other state
 let selectedTool = null;
