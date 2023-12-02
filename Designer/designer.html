@@ -16,16 +16,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            height: 100vh;
-            width: 100vw;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            /* height: 100vh; */
             width: 100vw;
             margin: 0;
             padding: 0;
@@ -37,6 +28,7 @@
             padding: 20px;
             position: fixed;
             height: 100%;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -76,10 +68,11 @@
         }
 
         #whiteboard {
-            display: block;
+            display: flex;
             flex-grow: 1;
             position: relative;
             overflow: hidden;
+            height: 100vh;
         }
 
         .whiteboard {
@@ -89,8 +82,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            /* width: 100%; */
+            height: 100vh;
         }
 
         .whiteboard-icon {
@@ -167,7 +160,7 @@
 </head>
 
 <body>
-    <div id="navbar" class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../index.html">Pro-Coach</a>
@@ -198,12 +191,7 @@
             </div>
         </nav>
     
-        <div class="container">
-            <div id="whiteboard">
-                <!-- Whiteboard area where icons will be added -->
-                <!-- Additional whiteboard elements will be added here dynamically -->
-            </div>
-
+        <div class="container-fluid">
             <div id="sidebar">
                 <!-- Icons for teammate, opponent, pass, move, delete/undo -->
                 <div id="icons-label">Icons</div>
@@ -224,6 +212,11 @@
                 <!-- Save button -->
                 <hr>
                 <button id="save-button">Save</button>
+            </div>
+
+            <div id="whiteboard">
+                <!-- Whiteboard area where icons will be added -->
+                <!-- Additional whiteboard elements will be added here dynamically -->
             </div>
         </div>
     </div>

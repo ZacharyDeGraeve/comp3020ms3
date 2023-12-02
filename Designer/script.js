@@ -1,5 +1,5 @@
 // Field should be dynamic
-let field = 'url("BasketballNBAGoalTop.png")';
+let field = 'url("FootballNFLRedZoneOffense.png")';
 
 // Variables to track the selected tool and other state
 let selectedTool = null;
@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Attach click event listener to whiteboard
   document.getElementById('whiteboard').addEventListener('click', function (event) {
       if (isTeammateIconSelected) {
-        addTeammateIcon(event.clientX, event.clientY);
+        addTeammateIcon(event.clientX-45, event.clientY-85);
         isTeammateIconSelected = false;
       } else if (isOpponentIconSelected) {
-        addOpponentIcon(event.clientX, event.clientY);
+        addOpponentIcon(event.clientX-45, event.clientY-85);
         isOpponentIconSelected = false;
       }
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moveStartIcon) {
           // If moveStartIcon is set, draw the arrow
           const startIcon = moveStartIcon.getBoundingClientRect();
-          drawArrow(moveStartIcon, startIcon.left + startIcon.width/2, startIcon.top + startIcon.height/2, event.clientX, event.clientY, 'move');
+          drawArrow(moveStartIcon, startIcon.left + startIcon.width/2 - 30, startIcon.top + startIcon.height/2 - 60, event.clientX - 30, event.clientY - 60, 'move');
           moveStartIcon = null; // Reset moveStartIcon after drawing the arrow
           isMoveIconSelected = false; // Reset move icon selection
           selectedTool = null;
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (passStartIcon) {
             // If passStartIcon is set, draw the arrow
             const startIcon = passStartIcon.getBoundingClientRect();
-            drawArrow(passStartIcon, startIcon.left + startIcon.width/2, startIcon.top + startIcon.height/2, event.clientX, event.clientY, 'pass', event.target.offsetParent);
+            drawArrow(passStartIcon, startIcon.left + startIcon.width/2 - 30, startIcon.top + startIcon.height/2 - 60, event.clientX - 30, event.clientY - 60, 'pass', event.target.offsetParent);
             passStartIcon = null; // Reset passStartIcon after drawing the arrow
             selectedTool = null;
             unhighlightIcon();
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   
       if (draggedIcon) {
-        let offsetX = event.clientX - draggedIcon.getBoundingClientRect().left;
-        let offsetY = event.clientY - draggedIcon.getBoundingClientRect().top;
+        let offsetX = event.clientX - draggedIcon.getBoundingClientRect().left + 30;
+        let offsetY = event.clientY - draggedIcon.getBoundingClientRect().top + 70;
   
         // Handle drag
         function moveIcon(event) {
